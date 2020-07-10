@@ -18,9 +18,10 @@ Education
 Research experience
 ======
 * Fall 2019 - current: Graduate Researcher
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+  * University of Virginia
+  * Duties included:
+    * Research
+  * Supervisor: Nicola Bezzo
 
 * Fall 2017 - Summer 2019: Graduate Researcher
   * University of Virginia
@@ -29,12 +30,13 @@ Research experience
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Model Predictive Control
+* Control Theory
+* ROS
+* Python
+* Reinforcement Learning
+* Artificial Intelligence
+* Image Processing
 
 Publications
 ======
@@ -54,6 +56,6 @@ Teaching
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Service and leadership
+<!-- Service and leadership
 ======
-* Currently signed in to 43 different slack teams
+* Currently signed in to 43 different slack teams -->

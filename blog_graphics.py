@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 
 gamma = 1
-val = np.array([-1,0,0,0,0,0,10]).reshape(1,7)
+val = np.array([0,0,0,0,0,0,0]).reshape(1,7)
 
 np.random.seed(0)
 sns.set()

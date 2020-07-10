@@ -11,21 +11,21 @@ redirect_from:
 
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* B.S. in Phyaics, University of Virginia, 2017
+* M.S. in Physics, University of Virginia, 2019
+* Ph.D in Electrical Engineering, University of Virginia, 2022 (expected)
 
-Work experience
+Research experience
 ======
-* Summer 2015: Research Assistant
+* Fall 2019 - current: Graduate Researcher
   * Github University
   * Duties included: Tagging issues
   * Supervisor: Professor Git
 
-* Fall 2015: Research Assistant
-  * Github University
+* Fall 2017 - Summer 2019: Graduate Researcher
+  * University of Virginia
   * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+  * Supervisor: Olivier Pfister
   
 Skills
 ======

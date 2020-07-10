@@ -8,10 +8,18 @@ val = np.array([-1,0,0,0,0,0,10]).reshape(1,7)
 
 np.random.seed(0)
 sns.set()
-uniform_data = np.random.rand(10, 12)
-print(type(uniform_data))
+
+plt.figure(figsize=(10,1))
+
 ax = sns.heatmap(val,
                 cmap=ListedColormap(['white']),
-                linecolor='black')
+                linewidths=1,
+                linecolor='black',
+                cbar=False,
+                square=True,
+                annot=np.array([0,0,0,0,0,0,0]).reshape(1,7),
+                yticklabels=False)
+for _,spine in ax.spines.items():
+    spine.set_visible(True)
 
 plt.show()

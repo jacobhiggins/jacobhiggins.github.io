@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-Welcome to my personal website. I have many research interests, but most boil down to the same question: _how can a autonomous system move in a smart and safe manner from one point to another?_ There are many different ways to attack this simple question, and I focus on creating robust and versatile controllers to address this topics.
+Welcome to my personal website. I have many research interests, but most boil down to the same question: _how can a autonomous system move in a smart and safe manner from one point to another?_ There are many different ways to attack this simple question, from an analytical viewpoint like control theory to data-driven approaches like reinforcement learning.
 
 Here I put my professional and academic accomplishments for anyone that might be interested, as well as notes on any personal projects
 that I like to explore. Please don't hesitate to reach out!

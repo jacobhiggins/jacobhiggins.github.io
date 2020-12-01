@@ -23,7 +23,7 @@ Typical control policies seek to track some reference that we give it. For auton
 
 <br/><img width="460" height="300" src='/images/research_pics/2020/occ_env/aku.png'>
 
-This idea of "balancing" two different objectives is often tackled in optimal control theory. Optimal control theory seeks to find a control policy $u = \pi(x)$ that can minimize a cost function $J(x,u)$. Reference tracking is often cast is as the square error $J_\text{ref} = (x - r)^2 $. Since the integrand is positive definite, this cost zero if and only if the system state $x$ exactly tracks the reference $r$. Physically, known unknown area is also positive definite, so if we had an analytical function $J_{ku}(x)$ to give us this area, we can create a combined objective function:
+This idea of "balancing" two different objectives is often tackled in optimal control theory. Optimal control theory seeks to find a control policy $\bm{u} = \pi(\bm{x})$ that can minimize a cost function $J(x,u)$. Reference tracking is often cast is as the square error $J_\text{ref} = (x - r)^2 $. Since the integrand is positive definite, this cost zero if and only if the system state $x$ exactly tracks the reference $r$. Physically, known unknown area is also positive definite, so if we had an analytical function $J_{ku}(x)$ to give us this area, we can create a combined objective function:
 
 \begin{equation}
 J(x,u) = J_\text{ref} + \phi_\text{ku}J_\text{ku}

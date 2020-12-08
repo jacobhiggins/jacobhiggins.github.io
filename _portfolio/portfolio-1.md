@@ -40,6 +40,10 @@ If system is currently in state $\mathbf{x}_0$ and we have a model for how the s
 \text{s.t.} \mathbf{x}(t\_{0}) = \mathbf{x}\_{0}
 \end{equation\*}
 
-This is called Model Predictive Control (MPC), and is an increasingly popular choice of controller not only because of its power, but also because computers are now becoming good enough to provide control $\mathbf{u}$ quickly enough for time-critical systems like UAVs.
+This is called Model Predictive Control (MPC), and is an increasingly popular choice of controller not only because of its ability to handle complex MIMO systems near constraints, but also because computers are now becoming good enough to provide control $\mathbf{u}$ quickly for time-critical systems like UAVs.
 
-For the control policy I designed, the reference tracking objective $J_\text{ref}(\mathbf{x},\mathbf{u})$ was a simple square error between a current system state $\mathbf{x}$ and a waypoint location $r$ that helped steer the robot towards the goal. What I 
+For the control policy I designed, the reference tracking objective $J_\text{ref}(\mathbf{x},\mathbf{u})$ was a simple square error between a current system state $\mathbf{x}$ and a waypoint location $r$ that helped steer the robot towards the goal. The perception objective $J_{ku}(\mathbf{x})$ was defined in terms of the robots relative location to the corner $\Delta x$ and $\Delta y$ (shown in Fig. 2 above), and had the following analytical form:
+
+\begin{equation\*}
+J\_{ku}(\mathbf{x}) = \frac{\atan{(\theta)}}{\Delta y} = \frac{\atan{(\Delta y/\Delta x)}}{\Delta y}
+\end{equation\*}

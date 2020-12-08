@@ -42,8 +42,29 @@ If system is currently in state $\mathbf{x}_0$ and we have a model for how the s
 
 This is called Model Predictive Control (MPC), and is an increasingly popular choice of controller not only because of its ability to handle complex MIMO systems near constraints, but also because computers are now becoming good enough to provide control $\mathbf{u}$ quickly for time-critical systems like UAVs.
 
-For the control policy I designed, the reference tracking objective $J_\text{ref}(\mathbf{x},\mathbf{u})$ was a simple square error between a current system state $\mathbf{x}$ and a waypoint location $r$ that helped steer the robot towards the goal. The perception objective $J_{ku}(\mathbf{x})$ was defined in terms of the robots relative location to the corner $\Delta x$ and $\Delta y$ (shown in Fig. 2 above), and had the following analytical form:
+For the control policy I designed, the reference tracking objective $J_\text{ref}(\mathbf{x},\mathbf{u})$ was a simple square error between a current system state $\mathbf{x}$ and a waypoint location $r$ that helped steer the robot towards the goal. Defining the perception objective was harder, because a general expression for the known-unknown area has discontinuities in derivatives for different hallway shapes. This discontinuity presented problems with the optimization software we selected to use. Instead, I found simple analytic expression that approximated the true value for the known-unknown area:
 
-\begin{equation\*}
+\begin{equation}
 J\_{ku}(\mathbf{x}) = \frac{\atan{(\theta)}}{\Delta y} = \frac{\atan{(\Delta y/\Delta x)}}{\Delta y}
-\end{equation\*}
+\end{equation}
+
+This perception objective $J_{ku}(\mathbf{x})$ was defined in terms of the robot's relative location to the corner $\Delta x$ and $\Delta y$ (shown in Fig. 2 above). This expression is simple to evaluate in an optimizer, and has two key properties:
+
+\begin{equation} \label{eq:perc-obj-far}
+\lim_{\Delta y\rightarrow \infty}J_{ku}(\mathbf{x}) = 0
+\end{equation}
+\begin{equation}\label{eq:perc-obj-close}
+\lim_{\Delta y\rightarrow 0}J_{ku}(\mathbf{x}) = 1/\Delta x
+\end{equation}
+
+In English, Eq. \ref{eq:perc-obj-far} shows how the perception objective vanishes when the robot is far away from the occluding corner, and Eq. \ref{eq:perc-obj-close} shows that perception objective approaches a value of $1/\Delta x$ when close to the occluding corner. In this case, the optimizer will try to increase $\Delta x$ in order to decrease the perception objective, thus moving the robot away form the occluding corner. Below shows the resulting motion when including the perception objective inside the MPC controller:
+
+<p align="center">
+  <img width="460" height="300" src="/images/research_pics/2020/occ_env/res2.png">
+</p>
+
+And here is a graph that shows how the known-unknown area is reduced when using the perception objective:
+
+<p align="center">
+  <img width="460" height="300" src="/images/research_pics/2020/occ_env/re2.png">
+</p>

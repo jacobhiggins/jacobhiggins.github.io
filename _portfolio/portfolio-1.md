@@ -87,15 +87,17 @@ Fig. () below shows visible area $\delta A_{s}$, reference trajectory $\tau$ and
 
 <div class="row">
   <div class="column">
-    <img src="/images/research_pics/2020/occ_env/res33.png" alt="Snow" style="width:50%">
+    <img src="/images/research_pics/2020/occ_env/res33.png" alt="Snow" style="width:30%">
   </div>
   <div class="column">
     <img src="/images/research_pics/2020/occ_env/re3.png" alt="Forest" style="width:50%">
   </div>
 </div>
 
-Again, this motion is only desirable when we know nothing is around the corner. motion with a nonzero perception weight $\phi_{ku}$ is desirable when we wish to see more around the corner. How can the robot autonomously decide between these two options?
+Again, this motion is only desirable when we know nothing is around the corner, and $\phi_{ku}=0$. On the other hand, motion with a nonzero perception weight $\phi_{ku}$ is desirable when we wish to see more around the corner. How can the robot autonomously decide between these two options?
 
-### Deciding to either cut the corner or move to see more around the corner
+### Using probability of collision to decide motion
 
-In 
+In order to autonomously make this decision, I focused on a similar, more mathematically manageable question: is the robot expected to collide with a dynamic obstacle?
+
+This question is answered using probability theory, and requires a model for the probability of collision in terms of position in the world. One very common 

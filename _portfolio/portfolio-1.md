@@ -87,11 +87,15 @@ Fig. () below shows visible area $\delta A_{s}$, reference trajectory $\tau$ and
 
 <div class="row">
   <div class="column">
-    <img src="/images/research_pics/2020/occ_env/res33.png" alt="Snow" style="width:100%">
+    <img src="/images/research_pics/2020/occ_env/res33.png" alt="Snow" style="width:50%">
   </div>
   <div class="column">
-    <img src="/images/research_pics/2020/occ_env/res3.png" alt="Forest" style="width:100%">
+    <img src="/images/research_pics/2020/occ_env/re3.png" alt="Forest" style="width:50%">
   </div>
 </div>
 
-Again, this motion is only desirable when we know nothing is around the corner
+Again, this motion is only desirable when we know nothing is around the corner. motion with a nonzero perception weight $\phi_{ku}$ is desirable when we wish to see more around the corner. How can the robot autonomously decide between these two options?
+
+### Deciding to either cut the corner or move to see more around the corner
+
+In 

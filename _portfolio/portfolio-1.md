@@ -34,11 +34,11 @@ The scalar $\phi_\text{ku} = [0,\infty)$ determines the relative importance of r
 If system is currently in state $\mathbf{x}_0$ and we have a model for how the system state $x$ changes with a control input $u$, we can predict future values of this cost function $J(\mathbf{x},\mathbf{u})$. Not only this, but we can also minimize the sum of this cost function over all predicted values:
 
 \begin{equation}
-\min_{\mathbf{u}} \int J(\mathbf{x},\mathbf{u}) dt
+\min\_{\mathbf{u}} \int J(\mathbf{x},\mathbf{u}) dt
 \end{equation}
-\begin{equation*}
-\text{s.t. \mathbf{x}(t_{0}) = \mathbf{x}_{0}}
-\end{equation*}
+\begin{equation\*}
+\text{s.t. \mathbf{x}(t\_{0}) = \mathbf{x}\_{0}}
+\end{equation\*}
 
 This is called Model Predictive Control (MPC), and is an increasingly popular choice of controller not only because of its power, but also because computers are now becoming good enough to provide control $\mathbf{u}$ quickly enough for time-critical systems like UAVs.
 

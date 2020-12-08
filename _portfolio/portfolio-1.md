@@ -73,4 +73,14 @@ And here is a graph that shows how the known-unknown area is reduced when using 
   <img width="460" height="300" src="/images/research_pics/2020/occ_env/re2.png">
 </p>
 
-### Placing the waypoint in a safe environment
+### Placing the waypoint when the robot is in a safe environment
+
+Assuming we can identify the location of an occluding corner, the perception objective allows the MPC to move so that it can reduce the known-unknown area produced by the occluding corner. The next step is to determine where to place the reference $\mathbf{r}$, which I will refer to as the waypoint. This waypoint must produce smooth, continuous motion in the robot in different situations. The first situation we'll consider is when $\phi_{ku}=0$, i.e., when the robot system doesn't care to reduce occluded vision. In this case, we desire the robot to cut the occluding corner, as this would minimize the overall travel time.
+
+In order to do this, we assume that the overall layout of the environment is known a priori. This only refers to walls and other permanent structures, and not obstacles that can move. In this way, we can create a very simple reference trajectory $\tau$ that can loosely guide the robot through the corridors. By considering the edge of the area visible to the robot $\delta A_{s}$, we place the waypoint at the intersection of these two lines:
+
+\begin{equation}
+\mathbf{r} = \delta A_{s} \cap \tau
+\end{equation}
+
+Fig. () below 

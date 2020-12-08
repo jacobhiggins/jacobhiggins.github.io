@@ -49,7 +49,7 @@ This is called Model Predictive Control (MPC), and is an increasingly popular ch
 For the control policy I designed, the reference tracking objective $J_\text{ref}(\mathbf{x},\mathbf{u})$ was a simple square error between a current system state $\mathbf{x}$ and a waypoint location $r$ that helped steer the robot towards the goal. Defining the perception objective was harder, because a general expression for the known-unknown area has discontinuities in derivatives for different hallway shapes. This discontinuity presented problems with the optimization software we selected to use. Instead, I found simple analytic expression that approximated the true value for the known-unknown area:
 
 \begin{equation}
-J\_{ku}(\mathbf{x}) = \frac{\atan{(\theta)}}{\Delta y} = \frac{\atan{(\Delta y/\Delta x)}}{\Delta y}
+J\_{ku}(\mathbf{x}) = \frac{\text{arctan}(\theta)}{\Delta y} = \frac{\text{\arctan}(\Delta y/\Delta x)}{\Delta y}
 \end{equation}
 
 This perception objective $J_{ku}(\mathbf{x})$ was defined in terms of the robot's relative location to the corner $\Delta x$ and $\Delta y$ (shown in Fig. 2 above). This expression is simple to evaluate in an optimizer, and has two key properties:
@@ -100,4 +100,4 @@ Again, this motion is only desirable when we know nothing is around the corner, 
 
 In order to autonomously make this decision, I focused on a similar, more mathematically manageable question: is the robot expected to collide with a dynamic obstacle?
 
-This question is answered using probability theory, and requires a model for the probability of collision in terms of position in the world. One very common 
+This question is answered using probability theory, and requires a model for the probability of collision in terms of position in the world. The key to finding this probability model is realizing that the probability of colliding with an obstacle at point $\bar{\mathbf{x}}$ is the same probability of an obstacle occupying that same point $\bar{\mathbf{x}}$. This may sound obvious, but this connection is what allows me to tap into a well-studied probability model known as (occupancy grid mapping)[https://en.wikipedia.org/wiki/Occupancy_grid_mapping]. In an occupancy grid, the entire environment is discretized into a grid where each square contains a value for the probability of occupancy, denoted as $P(x)$. When $P(x)=1$, then an object is known to be occupying that grid space, and when $P(x)=0$ then it is equally certain that there is nothing occupying that grid space.

@@ -75,7 +75,7 @@ And here is a graph that shows how the known-unknown area is reduced when using 
 
 ### Placing the waypoint when the robot is in a safe environment
 
-Assuming we can identify the location of an occluding corner, the perception objective allows the MPC to move so that it can reduce the known-unknown area produced by the occluding corner. The next step is to determine where to place the reference $\mathbf{r}$, which I will refer to as the waypoint. This waypoint must produce smooth, continuous motion in the robot in different situations. The first situation we'll consider is when $\phi_{ku}=0$, i.e., when the robot system doesn't care to reduce occluded vision. In this case, we desire the robot to cut the occluding corner, as this would minimize the overall travel time.
+Assuming we can identify the location of an occluding corner, the perception objective allows the MPC to move so that it can reduce the known-unknown area produced by the occluding corner. The next step is to determine where to place the reference $\mathbf{r}$, which I will refer to as the waypoint. This waypoint must produce smooth, continuous motion in the robot in different situations. The first situation we'll consider is when $\phi_{ku}=0$, i.e., when the robot system doesn't care to reduce occluded vision. In this case, we want the robot to cut the occluding corner, as this would minimize the overall travel time.
 
 In order to do this, we assume that the overall layout of the environment is known a priori. This only refers to walls and other permanent structures, and not obstacles that can move. In this way, we can create a very simple reference trajectory $\tau$ that can loosely guide the robot through the corridors. By considering the edge of the area visible to the robot $\delta A_{s}$, we place the waypoint at the intersection of these two lines:
 
@@ -83,4 +83,15 @@ In order to do this, we assume that the overall layout of the environment is kno
 \mathbf{r} = \delta A_{s} \cap \tau
 \end{equation}
 
-Fig. () below 
+Fig. () below shows visible area $\delta A_{s}$, reference trajectory $\tau$ and the intersection of these two lines as $p^*_\tau$ (ignore the other points for now). By placing the waypoint $\mathbf{r}$ where the edge of the visible area intersects the reference trajectory, we ensure that the robot will only move in a direction directly in its line of sight, cutting the corner when possible. Below shows the motion of the robot following this waypoint. Notice how it can cut the corner, reducing overall traveling time:
+
+<div class="row">
+  <div class="column">
+    <img src="/images/research_pics/2020/occ_env/res33.png" alt="Snow" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="/images/research_pics/2020/occ_env/res3.png" alt="Forest" style="width:100%">
+  </div>
+</div>
+
+Again, this motion is only desirable when we know nothing is around the corner

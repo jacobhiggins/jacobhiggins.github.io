@@ -37,7 +37,7 @@ If system is currently in state $\mathbf{x}_0$ and we have a model for how the s
 \min\_{\mathbf{u}} \int J(\mathbf{x},\mathbf{u}) dt
 \end{equation}
 \begin{equation\*}
-\text{s.t. \mathbf{x}(t\_{0}) = \mathbf{x}\_{0}}
+\text{s.t.} \mathbf{x}(t\_{0}) = \mathbf{x}\_{0}
 \end{equation\*}
 
 This is called Model Predictive Control (MPC), and is an increasingly popular choice of controller not only because of its power, but also because computers are now becoming good enough to provide control $\mathbf{u}$ quickly enough for time-critical systems like UAVs.

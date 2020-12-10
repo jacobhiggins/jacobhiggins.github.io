@@ -136,5 +136,9 @@ When moving around a corner, the main source of uncertainty is the fact that the
 
 Our control framework continually answer these two questions:
 - Is the expected distance to collision less than the stopping distance? (Safety)
-- If the expected distance to collision is less than the stopping distance and the situation is unsafe, what is the optimal trajectory to reduce occlusions, thereby increasing safety?
+- If the expected distance to collision is less than the stopping distance and the situation is unsafe, what is the optimal trajectory to reduce occlusions (Visibility), thereby increasing safety?
+
+The previous sections detail how both of these questions are answered. Next, let's look at some simulations that use the proposed control framework.
+
+### Simulations
 

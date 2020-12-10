@@ -128,3 +128,13 @@ If we let the car run and crash a million times, the exact location of the crash
   <img width="460" height="300" src="/images/research_pics/2020/occ_env/crash_stop_grid.png">
 </p>
 
+Here, the stopping distance is less than the expected distance to collision, meaning the robot has the ability to stop before colliding. If, however, the stopping distance was larger than the expected distance to collision, then the robot would likely collide with an obstacle. By comparing these two distances, our control framework can determine if a waypoint is safe or unsafe.
+
+### Combining safety and perception
+
+When moving around a corner, the main source of uncertainty is the fact that the robot cannot see around the corner, and accidentally run into something it cannot see. This increases the chance of collisions, and thus decreases the expected distance to collision as we approach the corner. If this is the case, then we can use the MPC we defined above to help the robot move around the corner, gaining visibility and reducing over all uncertainty. Doing so results in more certainty moving around the corner is safe, increasing the expected distance to collision.
+
+Our control framework continually answer these two questions:
+- Is the expected distance to collision less than the stopping distance? (Safety)
+- If the expected distance to collision is less than the stopping distance and the situation is unsafe, what is the optimal trajectory to reduce occlusions, thereby increasing safety?
+

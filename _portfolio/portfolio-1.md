@@ -108,7 +108,7 @@ Fig. () below shows visible area $\delta A_{s}$, reference trajectory $\tau$ and
   </div>
 </div>
 
-Again, this motion is only desirable when we know nothing is around the corner, and $\phi_{ku}=0$. On the other hand, motion with a nonzero perception weight $\phi_{ku}$ is desirable when we wish to see more around the corner. How can the robot autonomously decide between these two options?
+Again, this motion is only desirable when we know nothing is around the corner, or $\phi_{ku}=0$. On the other hand, motion with a nonzero perception weight $\phi_{ku}$ is desirable when we wish to see more around the corner. How can the robot autonomously decide between these two options?
 
 ### Using probability of collision to decide motion
 
@@ -116,4 +116,15 @@ In order to autonomously make this decision, I focused on a similar, more mathem
 
 This question is answered using probability theory, and requires a model for the probability of collision in terms of position in the world. The key to finding this probability model is realizing that the probability of colliding with an obstacle at point $\bar{\mathbf{x}}$ is the same probability of an obstacle occupying that same point $\bar{\mathbf{x}}$. This may sound obvious, but this connection is what allows me to tap into a well-studied probability model known as (occupancy grid mapping)[https://en.wikipedia.org/wiki/Occupancy_grid_mapping]. In an occupancy grid, the entire environment is discretized into a grid where each square contains a value for the probability of occupancy, denoted as $P(x)$. When $P(x)=1$, then an object is known to be occupying that grid space, and when $P(x)=0$ then it is equally certain that there is nothing occupying that grid space.
 
-The image below shows a simple, one dimensional occupancy grid map. The grayer the grid, the higher the probability that an obstacle is occupying that location. 
+The image below shows a simple, one dimensional occupancy grid map. The grayer the grid, the higher the probability that an obstacle is occupying that location. In this one dimensional world, the future trajectory of the car is to the right, toward these areas of uncertainty. So, there is some likelihood that the car will crash at certain distances as it travels to the right.
+
+<p align="center">
+  <img width="460" height="300" src="/images/research_pics/2020/occ_env/future_motion_grid.png">
+</p>
+
+If we let the car run and crash a million times, the exact location of the crash will obviously be different each time. But if took those distances and averaged them, we would get what is called _expected value_ for the distance traveled until collision. This expected distance to collision gives an estimate on how far the car can travel before it expects to hit something. To determine safety, we compare the expected distance to collision to the distance required for the system to stop. This stopping distance is an intrinsic property of the robot, dependent on things like much mass the robot and how hard it can brake. Below is the same figure, showing an example of the stopping distance and expected distance to collision:
+
+<p align="center">
+  <img width="460" height="300" src="/images/research_pics/2020/occ_env/crash_stop_grid.png">
+</p>
+

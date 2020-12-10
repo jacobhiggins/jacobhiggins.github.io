@@ -4,7 +4,7 @@ excerpt: "When you can't see where you want to go<br/><img src='/images/research
 collection: portfolio
 mathjax: true
 ---
-
+<style>
 .column {
   float: left;
   width: 33.33%;
@@ -17,6 +17,7 @@ mathjax: true
   clear: both;
   display: table;
 }
+</style>
 
 ### How do you move around a corner?
 

@@ -5,6 +5,19 @@ collection: portfolio
 mathjax: true
 ---
 
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 ### How do you move around a corner?
 
 To a human, this question is pretty uninteresting. When we get to a corner, we either turn left or right and keep walking. When you think about, though, there is some nuance to this process. If we are running late, we may choose to cut the corner to reduce travel time. If there is a door right around the corner (like the elevator in the below picture), then we might move along the opposite wall in order get a good look at where we're going. What makes this process interesting is not knowing what is around the corner. For us, deciding how to move in the presence of occlusions comes from the kind of reasoning humans are naturally good at. For autonomous mobile robots (AMR), this is still an outstanding problem.
@@ -101,3 +114,5 @@ Again, this motion is only desirable when we know nothing is around the corner, 
 In order to autonomously make this decision, I focused on a similar, more mathematically manageable question: is the robot expected to collide with a dynamic obstacle?
 
 This question is answered using probability theory, and requires a model for the probability of collision in terms of position in the world. The key to finding this probability model is realizing that the probability of colliding with an obstacle at point $\bar{\mathbf{x}}$ is the same probability of an obstacle occupying that same point $\bar{\mathbf{x}}$. This may sound obvious, but this connection is what allows me to tap into a well-studied probability model known as (occupancy grid mapping)[https://en.wikipedia.org/wiki/Occupancy_grid_mapping]. In an occupancy grid, the entire environment is discretized into a grid where each square contains a value for the probability of occupancy, denoted as $P(x)$. When $P(x)=1$, then an object is known to be occupying that grid space, and when $P(x)=0$ then it is equally certain that there is nothing occupying that grid space.
+
+The image below shows a simple, one dimensional occupancy grid map. The grayer the grid, the higher the probability that an obstacle is occupying that location. 

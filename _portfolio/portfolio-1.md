@@ -7,7 +7,7 @@ mathjax: true
 <style>
 .column {
   float: left;
-  width: 33.33%;
+  width: 50%;
   padding: 5px;
 }
 
@@ -101,10 +101,10 @@ Fig. () below shows visible area $\delta A_{s}$, reference trajectory $\tau$ and
 
 <div class="row">
   <div class="column">
-    <img src="/images/research_pics/2020/occ_env/res33.png" alt="Snow" style="width:10%">
+    <img src="/images/research_pics/2020/occ_env/res33.png" alt="Snow" style="width:50%">
   </div>
   <div class="column">
-    <img src="/images/research_pics/2020/occ_env/re3.png" alt="Forest" style="width:10%">
+    <img src="/images/research_pics/2020/occ_env/re3.png" alt="Forest" style="width:50%">
   </div>
 </div>
 

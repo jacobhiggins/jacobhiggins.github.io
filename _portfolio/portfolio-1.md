@@ -49,7 +49,7 @@ This is called Model Predictive Control (MPC), and is an increasingly popular ch
 For the control policy I designed, the reference tracking objective $J_\text{ref}(\mathbf{x},\mathbf{u})$ was a simple square error between a current system state $\mathbf{x}$ and a waypoint location $r$ that helped steer the robot towards the goal. Defining the perception objective was harder, because a general expression for the known-unknown area has discontinuities in derivatives for different hallway shapes. This discontinuity presented problems with the optimization software we selected to use. Instead, I found simple analytic expression that approximated the true value for the known-unknown area:
 
 \begin{equation}
-J\_{ku}(\mathbf{x}) = \frac{\text{arctan}(\theta)}{\Delta y} = \frac{\text{\arctan}(\Delta y/\Delta x)}{\Delta y}
+J\_{ku}(\mathbf{x}) = \frac{\text{arctan}(\theta)}{\Delta y} = \frac{\text{arctan}(\Delta y/\Delta x)}{\Delta y}
 \end{equation}
 
 This perception objective $J_{ku}(\mathbf{x})$ was defined in terms of the robot's relative location to the corner $\Delta x$ and $\Delta y$ (shown in Fig. 2 above). This expression is simple to evaluate in an optimizer, and has two key properties:
@@ -87,10 +87,10 @@ Fig. () below shows visible area $\delta A_{s}$, reference trajectory $\tau$ and
 
 <div class="row">
   <div class="column">
-    <img src="/images/research_pics/2020/occ_env/res33.png" alt="Snow" style="width:30%">
+    <img src="/images/research_pics/2020/occ_env/res33.png" alt="Snow" style="width:10%">
   </div>
   <div class="column">
-    <img src="/images/research_pics/2020/occ_env/re3.png" alt="Forest" style="width:50%">
+    <img src="/images/research_pics/2020/occ_env/re3.png" alt="Forest" style="width:10%">
   </div>
 </div>
 

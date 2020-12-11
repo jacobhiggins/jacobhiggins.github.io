@@ -79,7 +79,7 @@ This perception objective $J_{ku}(\mathbf{x})$ was defined in terms of the robot
 In English, Eq. \ref{eq:perc-obj-far} shows how the perception objective vanishes when the robot is far away from the occluding corner, and Eq. \ref{eq:perc-obj-close} shows that perception objective approaches a value of $1/\Delta x$ when close to the occluding corner. In this case, the optimizer will try to increase $\Delta x$ in order to decrease the perception objective, thus moving the robot away form the occluding corner. Below shows the resulting motion when including the perception objective inside the MPC controller:
 
 <p align="center">
-  <img width="460" height="300" src="/images/research_pics/2020/occ_env/res2.png">
+  <img width="420" height="280" src="/images/research_pics/2020/occ_env/res2.png">
 </p>
 
 And here is a graph that shows how the known-unknown area is reduced when using the perception objective:

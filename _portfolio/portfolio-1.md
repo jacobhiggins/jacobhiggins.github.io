@@ -157,3 +157,5 @@ The rest is self-explanatory. So, what is happening? At the beginning of the sim
 All the tiny blue dots are meant to represent all the locations that a person might be as they walk from left to right. Once a tiny blue dot comes within the FOV of the UGV, we consider that person was observed by the UGV (in the sim, they disappear). Each time a person is observed, we record the distance between the person and the robot. In general, the closer the person is first observed by the UGV, the more percarious the situation, since the robot doesn't have as much time to react. For comparison, consider the simulation below where the robot simply cuts the corner:
 
 ![Value Iteration Value Function](/images/research_pics/2020/occ_env/cut_corner.gif)
+
+By cutting the corner, the UGV reduces overall travel time. But notice how as it cuts the corner, there are many people/blue dots that are coming around the corner as well, still unobserved by the robot. As the people step out, the UGV may observed these people but is going too fast to slow down at this point.

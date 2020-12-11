@@ -159,3 +159,6 @@ All the tiny blue dots are meant to represent all the locations that a person mi
 ![Value Iteration Value Function](/images/research_pics/2020/occ_env/cut_corner.gif)
 
 By cutting the corner, the UGV reduces overall travel time. But notice how as it cuts the corner, there are many people/blue dots that are coming around the corner as well, still unobserved by the robot. As the people step out, the UGV may observed these people but is going too fast to slow down at this point.
+
+By recording the distances-at-first-sight between UGV and simulated people, we can get a sense of how safe each robot motion is. Below shows a cumulative distribution function of these recorded distances:
+

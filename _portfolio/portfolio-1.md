@@ -142,3 +142,7 @@ The previous sections detail how both of these questions are answered. Next, let
 
 ### Simulations
 
+So, what does the full control framework look like? Below is a gif of an example situation, where a UGV is approaching an occluding corner. There is a lot of things going on in this one gif, so here's a break down of all the components:
+- 
+
+![Value Iteration Value Function](/images/research_pics/2020/occ_env/control_framework.gif)

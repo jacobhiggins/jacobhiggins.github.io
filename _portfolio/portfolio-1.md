@@ -102,10 +102,10 @@ Fig. () below shows visible area $\delta A_{s}$, reference trajectory $\tau$ and
 
 <div class="row">
   <div class="column">
-    <img src="/images/research_pics/2020/occ_env/res33.png" alt="Snow" style="width:5=60%">
+    <img src="/images/research_pics/2020/occ_env/res33.png" alt="Snow" style="width:5=40%">
   </div>
   <div class="column">
-    <img src="/images/research_pics/2020/occ_env/re3.png" alt="Forest" style="width:100%">
+    <img src="/images/research_pics/2020/occ_env/re3.png" alt="Forest" style="width:150%">
   </div>
 </div>
 

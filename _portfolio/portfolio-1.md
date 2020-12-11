@@ -1,6 +1,7 @@
 ---
 title: "Moving In Occluded Environments"
-excerpt: "When you can't see where you want to go<br/><img src='/images/research_pics/2020/occ_env/intro.png'>"
+# excerpt: "When you can't see where you want to go<br/><img src='/images/research_pics/2020/occ_env/intro.png'>"
+excerpt: "When you can't see where you want to go"
 collection: portfolio
 mathjax: true
 ---
@@ -144,7 +145,7 @@ The previous sections detail how both of these questions are answered. Next, let
 
 So, what does the full control framework look like? Below is a gif of an example situation, where an unmanned ground vehicle (UGV) is approaching an occluding corner. There is a lot of things going on in this one gif, so here's a break down of the important components:
 - Big blue dot: simulated UGV
-- Lots of tiny blue dots: simulated people, walking from right to left with some set velocity profile
+- Lots of tiny blue dots: simulated dynamic objects (e.g. people, other robots), moving from right to left with some set velocity profile
 - Orange dashed line: field of view of the UGV sensors
 - Red-dashed line: reference trajectory
 - Pink area around corner: area occluded to UGV (in my paper I call this the known unknown area)
@@ -154,14 +155,19 @@ The rest is self-explanatory. So, what is happening? At the beginning of the sim
 
 ![Value Iteration Value Function](/images/research_pics/2020/occ_env/control_framework.gif)
 
-All the tiny blue dots are meant to represent all the locations that a person might be as they walk from left to right. Once a tiny blue dot comes within the FOV of the UGV, we consider that person was observed by the UGV (in the sim, they disappear). Each time a person is observed, we record the distance between the person and the robot. In general, the closer the person is first observed by the UGV, the more percarious the situation, since the robot doesn't have as much time to react. For comparison, consider the simulation below where the robot simply cuts the corner:
+All the tiny blue dots are meant to represent all the locations that a moving object might be as they move from right to left. Once a tiny blue dot comes within the FOV of the UGV, we consider that the object was observed by the UGV (in the sim, they disappear). Each time a tiny blue dot is observed, we record the distance between the dot and the robot. In general, the closer the object is first observed by the UGV, the more percarious the situation, since the robot doesn't have as much time to react. For comparison, consider the simulation below where the robot simply cuts the corner:
 
 ![Value Iteration Value Function](/images/research_pics/2020/occ_env/cut_corner.gif)
 
-By cutting the corner, the UGV reduces overall travel time. But notice how as it cuts the corner, there are many people/blue dots that are coming around the corner as well, still unobserved by the robot. As the people step out, the UGV may observe these people, but is going too fast to slow down.
+By cutting the corner, the UGV reduces overall travel time. But notice how as it cuts the corner, there are many dynamic objects/blue dots that are coming around the corner as well, still unobserved by the robot. As the objects come into view, the UGV may observe these people, but is going too fast to slow down.
 
 By recording the distances-at-first-sight between UGV and simulated people, we can get a sense of how safe each robot motion is. Below shows a cumulative distribution function of these recorded distances:
 
 <p align="center">
-  <img width="460" height="300" src="/images/research_pics/2020/occ_env/safety-results.png">
+  <img width="500" height="320" src="/images/research_pics/2020/occ_env/safety-results.png">
 </p>
+
+Unlike probability functions, where a function $p(x)$ gives you the probability of obtaining $x$, a cumulative distribution function $CDF(x)$ gives you the probability of obtaining a value _less than or equal to_ $x$. This CDF is well-suited for our application, since we want to know the probability of first observing a dynamic object within a certain distance (i.e., less that or equal to a distance). In the figure above, you see that the CDF reaches a value of one at 5 meters. This is the maximum sensing range for the UGV, and simply means that the UGV must observe dynamic object within 5 meters, since it can't see outside its range.
+
+On this plot are three different runs. The blue bars correspond to the robot simply cutting the corner, and the yellow bars are when the robot uses the full control framework, moving to gain visibility then cutting the corner when its safe. The brown-ish bar is a third run that is "in between," since it doesn't cut the corner, but it also doesn't move to gain visibility. It slows down before entering the second hallway (staying in the middle of the first hallway), and only enters when it sees no one is coming around the corner.
+

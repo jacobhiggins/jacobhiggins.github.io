@@ -102,10 +102,10 @@ Fig. () below shows visible area $\delta A_{s}$, reference trajectory $\tau$ and
 
 <div class="row">
   <div class="column">
-    <img src="/images/research_pics/2020/occ_env/res33.png" alt="Snow" style="width:50%">
+    <img src="/images/research_pics/2020/occ_env/res33.png" alt="Snow" style="width:5=80%">
   </div>
   <div class="column">
-    <img src="/images/research_pics/2020/occ_env/re3.png" alt="Forest" style="width:50%">
+    <img src="/images/research_pics/2020/occ_env/re3.png" alt="Forest" style="width:100%">
   </div>
 </div>
 
@@ -171,3 +171,4 @@ Unlike probability functions, where a function $p(x)$ gives you the probability 
 
 On this plot are three different runs. The blue bars correspond to the robot simply cutting the corner, and the yellow bars are when the robot uses the full control framework, moving to gain visibility then cutting the corner when its safe. The brown-ish bar is a third run that is "in between," since it doesn't cut the corner, but it also doesn't move to gain visibility. It slows down before entering the second hallway (staying in the middle of the first hallway), and only enters when it sees no one is coming around the corner.
 
+It is clear that by minimizing traveling time, the robot increases in chances of first observing a dynamic object at an unsafe distance. 

@@ -135,14 +135,24 @@ Here, the stopping distance is less than the expected distance to collision, mea
 When moving around a corner, the main source of uncertainty is the fact that the robot cannot see around the corner, and accidentally run into something it cannot see. This increases the chance of collisions, and thus decreases the expected distance to collision as we approach the corner. If this is the case, then we can use the MPC we defined above to help the robot move around the corner, gaining visibility and reducing over all uncertainty. Doing so results in more certainty moving around the corner is safe, increasing the expected distance to collision.
 
 Our control framework continually answer these two questions:
-- Is the expected distance to collision less than the stopping distance? (Safety)
-- If the expected distance to collision is less than the stopping distance and the situation is unsafe, what is the optimal trajectory to reduce occlusions (Visibility), thereby increasing safety?
+- Question 1: Is the expected distance to collision less than the stopping distance? (Safety)
+- Question 2: If the expected distance to collision is less than the stopping distance and the situation is unsafe, what is the optimal trajectory to reduce occlusions (Visibility), thereby increasing safety?
 
 The previous sections detail how both of these questions are answered. Next, let's look at some simulations that use the proposed control framework.
 
 ### Simulations
 
-So, what does the full control framework look like? Below is a gif of an example situation, where a UGV is approaching an occluding corner. There is a lot of things going on in this one gif, so here's a break down of all the components:
-- 
+So, what does the full control framework look like? Below is a gif of an example situation, where an unmanned ground vehicle (UGV) is approaching an occluding corner. There is a lot of things going on in this one gif, so here's a break down of the important components:
+- Big blue dot: simulated UGV
+- Lots of tiny blue dots: simulated people, walking from right to left with some set velocity profile
+- Orange dashed line: field of view of the UGV sensors
+- Red-dashed line: reference trajectory
+- Pink area around corner: area occluded to UGV (in my paper I call this the known unknown area)
+- Gray area in second hallway: probability of occupancy in over a discretized grid in the second hallway (more gray = higher probability)
+
+The rest is self-explanatory. So, what is happening? At the beginning of the simulation, the robot moves down the hallway unaware of the corner. Once the corner is within field of view, the robot is uncertain of what is around the corner and so moves to get a better look. At first, the expected distance to collision is longer than the breaking distance past the corner. The more the UGV observes what it can around the corner, the more it is certain that nothing is occupying the second hallway; hence, the observed area becomes whiter. At a certain point (around 4.2 seconds) the expected distance to collision becomes shorter than the breaking distance. At this point, it is safe to move into the second hallway and the robot begins to cut the corner.
 
 ![Value Iteration Value Function](/images/research_pics/2020/occ_env/control_framework.gif)
+
+All the tiny blue dots are meant to represent all the locations that a person might be as they walk from left to right. Once a tiny blue dot comes within the FOV of the UGV, we consider that person was observed by the UGV. Each time a person is observed, we record the distance between the person and the robot. In general, the closer the person is first observed by the UGV, the more percarious the situation, since the robot doesn't have as much time to react. For comparison, consider the simulation below where the robot simply cuts the corner:
+

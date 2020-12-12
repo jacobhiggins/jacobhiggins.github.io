@@ -98,7 +98,13 @@ In order to do this, we assume that the overall layout of the environment is kno
 \mathbf{r} = \delta A_{s} \cap \tau
 \end{equation}
 
-Fig. () below shows visible area $\delta A_{s}$, reference trajectory $\tau$ and the intersection of these two lines as $p^*_\tau$ (ignore the other points for now). By placing the waypoint $\mathbf{r}$ where the edge of the visible area intersects the reference trajectory, we ensure that the robot will only move in a direction directly in its line of sight, cutting the corner when possible. Below shows the motion of the robot following this waypoint. Notice how it can cut the corner, reducing overall traveling time:
+Fig. () below shows visible area $\delta A_{s}$, reference trajectory $\tau$ and the intersection of these two lines as $p^*_\tau$. Ignore the other points that are on the reference trajectory but closer to the robot; those are explained in the research paper, but can be ignored in this short post.
+
+<p align="center">
+  <img width="460" height="300" src="/images/research_pics/2020/occ_env/waypoint.png">
+</p>
+
+By placing the waypoint $\mathbf{r}$ where the edge of the visible area intersects the reference trajectory, we ensure that the robot will only move in a direction directly in its line of sight, cutting the corner when possible. Below shows the motion of the robot following this waypoint. Notice how it can cut the corner, reducing overall traveling time:
 
 <div class="row">
   <div class="column">
@@ -175,8 +181,30 @@ It is clear that by minimizing traveling time, the robot increases in chances of
 
 ### Experiments
 
+Experimental verification was done on the (Clear Path Jackal)[https://clearpathrobotics.com/jackal-small-unmanned-ground-vehicle/] UGV, a robust system designed for navigating all types of terrain. Our lab used a (Vicon motion capture system)[https://www.vicon.com/] to determine the position of the Jackal and the occluding corner. This information was fed into the control framework. One caveat when using the proposed framework: the Jackal works by commanding velocities, meaning that at any point we can command zero velocity and the robot effectively had a zero stopping distance. Because of this, the following experiment shows the capability of the navigation in safe environments (cutting the corner), as well navigation to improve perception; it did not include the safety module of the control framework.
 
+The image below shows the overall experiment with the Jackal cutting the corner. At the corner, the inlet show what an onboard Lidar sensor sees at the point in time.
+
+<p align="center">
+  <img width="460" height="300" src="/images/research_pics/2020/occ_env/Lshape_safe_cropped.png">
+</p>
+
+Here is the same experiment, except the Jackal is set to maximize visibility around the corner. Notice that at the inlet, the lidar can see more points around the corner.
+
+<p align="center">
+  <img width="460" height="300" src="/images/research_pics/2020/occ_env/Lshape_perception_cropped.png">
+</p>
+
+Finally, here is a comparison of the known unknown area for the two experiments:
+
+<p align="center">
+  <img width="460" height="300" src="/images/research_pics/2020/occ_env/Lshape_results.png">
+</p>
+
+In future works, we hope to expand the traversable area of the robot to (UVA's Link Lab)[https://engineering.virginia.edu/link-lab] building by constructing a map using 2D lidar points.
 
 ### Conclusions
 
-These are just a couple of things that I did with this control framework. If you are interested further, here is <p><a href="/images/research_pics/2020/occ_env/ICRA2021_NegotiateCorners.pdf"> my official research paper </a></p> that shows more simulations, as well as a stability proof not mentioned in this post.
+These are just a couple of things that I did with this control framework. If you are interested further, here is <a href="/images/research_pics/2020/occ_env/ICRA2021_NegotiateCorners.pdf"> my official research paper </a> that shows more simulations, as well as a stability proof not mentioned in this post.
+
+In the future, we wish to improve the autonomous capabilities by further generalizing the framework. Right now, the framework requires the knowledge of the occluding corner for the MPC to work correctly, but it is sometimes ambiguous to define what the occluding corner is in different situations. What if there are multiple corners that are creating multiple known-unknown areas? By generalizing the framework, we hope to address a wider range of scenarios. Another research direction I'm interested in is quantifying risk. The idea is touched on by our safety framework by considering the expected distance to collision, but there is a lot left to explore there. Is there a way to find motion that minimizes risk? What if risk were a constraint, and you want to find motion that is only has a 1% or less chance of collision? These kinds of questions make this work really exciting.

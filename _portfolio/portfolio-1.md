@@ -171,4 +171,12 @@ Unlike probability functions, where a function $p(x)$ gives you the probability 
 
 On this plot are three different runs. The blue bars correspond to the robot simply cutting the corner, and the yellow bars are when the robot uses the full control framework, moving to gain visibility then cutting the corner when its safe. The brown-ish bar is a third run that is "in between," since it doesn't cut the corner, but it also doesn't move to gain visibility. It slows down before entering the second hallway (staying in the middle of the first hallway), and only enters when it sees no one is coming around the corner.
 
-It is clear that by minimizing traveling time, the robot increases in chances of first observing a dynamic object at an unsafe distance. 
+It is clear that by minimizing traveling time, the robot increases in chances of first observing a dynamic object at an unsafe distance.
+
+### Experiments
+
+
+
+### Conclusions
+
+These are just a couple of things that I did with this control framework. If you are interested further, here is <p><a href="/images/research_pics/2020/occ_env/ICRA2021_NegotiateCorners.pdf"> my official research paper </a></p> that shows more simulations, as well as a stability proof not mentioned in this post.

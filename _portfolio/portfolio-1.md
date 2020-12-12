@@ -98,7 +98,7 @@ In order to do this, we assume that the overall layout of the environment is kno
 \mathbf{r} = \delta A_{s} \cap \tau
 \end{equation}
 
-Fig. () below shows visible area $\delta A_{s}$, reference trajectory $\tau$ and the intersection of these two lines as $p^*_\tau$. Ignore the other points that are on the reference trajectory but closer to the robot; those are explained in the research paper, but can be ignored in this short post.
+The image below shows visible area $\delta A_{s}$, reference trajectory $\tau$ and the intersection of these two lines as $p^*_\tau$. Ignore the other points that are on the reference trajectory but closer to the robot; those are explained in the research paper, but can be ignored in this short post.
 
 <p align="center">
   <img width="460" height="300" src="/images/research_pics/2020/occ_env/waypoint.png">
@@ -121,7 +121,7 @@ Again, this motion is only desirable when we know nothing is around the corner, 
 
 In order to autonomously make this decision, I focused on a similar, more mathematically manageable question: is the robot expected to collide with a dynamic obstacle?
 
-This question is answered using probability theory, and requires a model for the probability of collision in terms of position in the world. The key to finding this probability model is realizing that the probability of colliding with an obstacle at point $\bar{\mathbf{x}}$ is the same probability of an obstacle occupying that same point $\bar{\mathbf{x}}$. This may sound obvious, but this connection is what allows me to tap into a well-studied probability model known as (occupancy grid mapping)[https://en.wikipedia.org/wiki/Occupancy_grid_mapping]. In an occupancy grid, the entire environment is discretized into a grid where each square contains a value for the probability of occupancy, denoted as $P(x)$. When $P(x)=1$, then an object is known to be occupying that grid space, and when $P(x)=0$ then it is equally certain that there is nothing occupying that grid space.
+This question is answered using probability theory, and requires a model for the probability of collision in terms of position in the world. The key to finding this probability model is realizing that the probability of colliding with an obstacle at point $\bar{\mathbf{x}}$ is the same probability of an obstacle occupying that same point $\bar{\mathbf{x}}$. This may sound obvious, but this connection is what allows me to tap into a well-studied probability model known as [occupancy grid mapping](https://en.wikipedia.org/wiki/Occupancy_grid_mapping). In an occupancy grid, the entire environment is discretized into a grid where each square contains a value for the probability of occupancy, denoted as $P(x)$. When $P(x)=1$, then an object is known to be occupying that grid space, and when $P(x)=0$ then it is equally certain that there is nothing occupying that grid space.
 
 The image below shows a simple, one dimensional occupancy grid map. The grayer the grid, the higher the probability that an obstacle is occupying that location. In this one dimensional world, the future trajectory of the car is to the right, toward these areas of uncertainty. So, there is some likelihood that the car will crash at certain distances as it travels to the right.
 
@@ -181,7 +181,7 @@ It is clear that by minimizing traveling time, the robot increases in chances of
 
 ### Experiments
 
-Experimental verification was done on the (Clear Path Jackal)[https://clearpathrobotics.com/jackal-small-unmanned-ground-vehicle/] UGV, a robust system designed for navigating all types of terrain. Our lab used a (Vicon motion capture system)[https://www.vicon.com/] to determine the position of the Jackal and the occluding corner. This information was fed into the control framework. One caveat when using the proposed framework: the Jackal works by commanding velocities, meaning that at any point we can command zero velocity and the robot effectively had a zero stopping distance. Because of this, the following experiment shows the capability of the navigation in safe environments (cutting the corner), as well navigation to improve perception; it did not include the safety module of the control framework.
+Experimental verification was done on the [Clear Path Jackal](https://clearpathrobotics.com/jackal-small-unmanned-ground-vehicle/) UGV, a robust system designed for navigating all types of terrain. Our lab used a [Vicon motion capture system](https://www.vicon.com/) to determine the position of the Jackal and the occluding corner. This information was fed into the control framework. One caveat when using the proposed framework: the Jackal works by commanding velocities, meaning that at any point we can command zero velocity and the robot effectively had a zero stopping distance. Because of this, the following experiment shows the capability of the navigation in safe environments (cutting the corner), as well navigation to improve perception; it did not include the safety module of the control framework.
 
 The image below shows the overall experiment with the Jackal cutting the corner. At the corner, the inlet show what an onboard Lidar sensor sees at the point in time.
 
@@ -201,7 +201,7 @@ Finally, here is a comparison of the known unknown area for the two experiments:
   <img width="460" height="300" src="/images/research_pics/2020/occ_env/Lshape_results.png">
 </p>
 
-In future works, we hope to expand the traversable area of the robot to (UVA's Link Lab)[https://engineering.virginia.edu/link-lab] building by constructing a map using 2D lidar points.
+In future works, we hope to expand the traversable area of the robot to [UVA's Link Lab](https://engineering.virginia.edu/link-lab) building by constructing a map using 2D lidar points.
 
 ### Conclusions
 

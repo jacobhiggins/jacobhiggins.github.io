@@ -8,10 +8,19 @@ redirect_from:
   - /about.html
 ---
 
-Welcome to my personal website. I have many research interests, but most boil down to the same question: _how can a autonomous system move in a smart and safe manner from one point to another?_ There are many different ways to attack this simple question, from an analytical viewpoint like control theory to data-driven approaches like reinforcement learning.
+Welcome to my personal website. I have many research interests, but most boil down to the same question: _how can a autonomous system move in a smart and safe manner from one point to another?_ There are many approaches to this challenge, from an analytical viewpoint like control theory to data-driven approaches like reinforcement learning.
 
 Here I put my professional and academic accomplishments for anyone that might be interested, as well as notes on any personal projects
 that I like to explore. Please don't hesitate to reach out!
+
+Some things I've done:
+
+# 2D EKF SLAM with Differential Drive Model
+<a href="https://jacobhiggins.github.io/posts/2021/02/20/blog-post/">
+  <p align="center">
+    <img width="750" height="400" src="/images/blog_pics/2021/EKF_SLAM/ekf_slam_2D_wSigma.gif">
+  </p>
+</a>
 
 <!-- This is the front page of a website that is powered by the [academicpages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the respository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. You can fork [this repository](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and markdown files, add your own PDFs and other content, and have your own site for free, with no ads! An older version of this template powers my own personal website at [stuartgeiger.com](http://stuartgeiger.com), which uses [this Github repository](https://github.com/staeiou/staeiou.github.io). -->
 
